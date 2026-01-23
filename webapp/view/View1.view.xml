@@ -1,0 +1,217 @@
+<mvc:View
+    controllerName="project1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <VBox class="sapUiSmallMargin">
+            <Label
+                text="{i18n>lblusername}"
+                labelFor="input-a"
+            />
+            <Input
+                id="input-a"
+                required="true"
+                type="Text"
+                placeholder="Enter Username"
+            />
+
+            <Label
+                text="{i18n>lblPassword}"
+                labelFor="input-b"
+                design="Bold"
+            />
+            <Input
+                id="input-b"
+                type="Password"
+                placeholder="Enter Password"
+            />
+
+            <Label
+                text="{i18n>lblConfirmPassword}"
+                labelFor="input-c"
+            />
+            <Input
+                id="input-c"
+                type="Password"
+                placeholder="Enter Password"
+            />
+
+			<CheckBox
+                text="Remember me"
+                valueState="Warning"
+            />
+
+            <HBox
+                width="100%"
+                justifyContent="Center"
+            >
+                <Button
+                    text="{i18n>btnConfirm}"
+                    class="sapUiSmallMarginBottom"
+                    press="onConfirmationPress"
+                    width="280px"
+                />
+
+                <Button
+                    text="{i18n>btnClear}"
+                    class="sapUiSmallMarginBottom"
+                    press="onClearPress"
+                    width="280px"
+                />
+            </HBox>
+
+
+            <VBox alignItems="Center">
+                <Link
+                    text="Back To Login?"
+                    press="handleLinkPress"
+                />
+            </VBox>
+
+            <ToolbarSpacer />
+
+            <Text
+                text="Lorem ipsum dolor st amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat"
+                textAlign="Center"
+                visible="true"
+            />
+            <VBox alignItems="Center">
+                <Toolbar width="100%">
+                    <ToolbarSpacer />
+                    <Button
+                        text="{i18n>btnDefault}"
+                        type="Success"
+                        press="onPressSuccess"
+                    />
+                    <Button
+                        type="{i18n>btnReject}"
+                        text="Reject"
+                        press="onPressReject"
+                    />
+                    <Button
+                        icon="sap-icon://account"
+                        type="Transparent"
+                        press="onPress"
+                        ariaLabelledBy="actionButtonLabel"
+                    />
+                    <ToolbarSpacer />
+                </Toolbar>
+            </VBox>
+
+            <HBox justifyContent="SpaceBetween">
+                <Button
+                    id="filterMethod"
+                    class="myCustomCSS"
+                    text="{i18n>btnCSS}"
+                    press="onjavascriptfilterMethod"
+                />
+                <Text
+                    id="ajjd"
+                    text="{filterModel>/Address}"
+                />
+
+                <Button
+                    text="Show Message Toast"
+                    press="handleMessageToastPress"
+                />
+            </HBox>
+
+            <VBox>
+                <Label
+                    text="{i18n>lblPropertyBindingExample}"
+                    design="Bold"
+                />
+                <Text
+                    id="propertyBindingID"
+                    text="{Items>/0/Name}"
+                />
+                <Text
+                    id="propertyBindingID1"
+                    text="{Items>/0/Tel}"
+                />
+            </VBox>
+            <!--Element Binding-->
+            <VBox>
+                <Label
+                    text="{i18n>lblElementBindingExample}"
+                    design="Bold"
+                />
+                <l:VerticalLayout
+                    id="vlayout"
+                    binding="{Items>/0/address}"
+                    width="100%"
+                >
+                    <Text
+                        id="streetid"
+                        text="{Items>street}"
+                    />
+                    <Text
+                        id="cityid"
+                        text="{Items>city}"
+                    />
+                    <Text
+                        id="countryid"
+                        text="{Items>country}"
+                    />
+                </l:VerticalLayout>
+            </VBox>
+            <!--Aggregation Binding-->
+            <VBox>
+                <Label
+                    text="{i18n>lblAggregationBindingExample}"
+                    design="Bold"
+                />
+                <List
+                    id="employeeTable"
+                    headerText="Employee Detail"
+                    items="{Items>/}"
+                >
+                    <ObjectListItem
+                        id="employeeName"
+                        title="{Items>Name}"
+                    />
+                </List>
+            </VBox>
+        </VBox>
+
+		<VBox >
+			<Label
+				text="{i18n>lblComboBox}"
+				design="Bold"
+			/>
+			<ComboBox items="{countries>/Countries}">
+				<core:Item
+					key="{countries>key}"
+					text="{countries>text}"
+				/>
+			</ComboBox>
+		</VBox>
+
+        
+            <VBox class="sapUiSmallMargin">
+                    <Label
+                        text="Default RadioButton use"
+                        labelFor="GroupA"
+                    />
+                    <RadioButtonGroup id="GroupA" columns="5">
+                        <RadioButton text="Option 1" selected="true"/>
+                        <RadioButton text="Option 2" />
+                        <RadioButton text="Option 3" />
+                        <RadioButton text="Option 4" />
+                        <RadioButton text="Option 5" />
+                    </RadioButtonGroup>
+            </VBox>
+
+			<Switch state="true">
+				<layoutData>
+					<FlexItemData growFactor="1" />
+				</layoutData>
+			</Switch>
+    </Page>
+</mvc:View>

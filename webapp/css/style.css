@@ -1,0 +1,7 @@
+/* Enter your custom styles here */
+.myCustomCSS>.sapMBtnInner{
+    border: 0px solid #ababab;
+    border-bottom: 3px solid;
+    border-color: red;    
+    color: blue !important;
+}

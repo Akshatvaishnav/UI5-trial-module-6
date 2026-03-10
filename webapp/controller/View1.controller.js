@@ -3,8 +3,9 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageBox",
     "sap/m/MessageToast",
-    "sap/ui/model/resource/ResourceModel"
-], (Controller, JSONModel,MessageBox, MessageToast, ResourceModel) => {
+    "sap/ui/model/resource/ResourceModel",
+    "sap/ui/core/UIComponent"
+], (Controller, JSONModel,MessageBox, MessageToast, ResourceModel, UIComponent) => {
     var oModel;
     var oResourceModel;
     "use strict";
@@ -92,6 +93,13 @@ sap.ui.define([
             var CoinfirmPassword = this.getView().byId("input-c").getValue();
 
             MessageBox.show(username+" , "+Password+" , "+CoinfirmPassword)
+        },
+        onPressNavigate: function(){
+            var router = UIComponent.getRouterFor(this);
+            var oString = "Welcome to the Second View by Routing and Navigation";
+            router.navTo("RouteNew",{
+                dt: oString
+            });
         }
     });
 });

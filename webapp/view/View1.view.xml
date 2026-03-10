@@ -43,7 +43,7 @@
             />
 
 			<CheckBox
-                text="Remember me"
+                text="Save Password"
                 valueState="Warning"
             />
 
@@ -213,5 +213,12 @@
 					<FlexItemData growFactor="1" />
 				</layoutData>
 			</Switch>
+
+            <VBox >
+             <Button
+                text="{i18n>btnNavigate}"
+                
+                press="onPressNavigate"
+            /></VBox>
     </Page>
 </mvc:View>

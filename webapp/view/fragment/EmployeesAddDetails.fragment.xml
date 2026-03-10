@@ -1,0 +1,83 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog
+        id="addDialog"
+        title="AddDialog"
+    >
+        <VBox id="box1">
+            <Text
+                id="textid"
+                class="sapUiSmallMarginBegin"
+                text="Enter Employee Id"
+            />
+            <Input
+                id="inpt1"
+                class="sapUiSmallMarginBegin"
+                width="40%"
+            />
+        </VBox>
+        <VBox id="box2">
+            <Text
+                id="textname"
+                class="sapUiSmallMarginBegin"
+                text="Enter Employee Name"
+            />
+            <Input
+                id="inpt2"
+                class="sapUiSmallMarginBegin"
+                width="40%"
+            />
+        </VBox>
+
+        <VBox id="box3">
+            <Text
+                id="textsal"
+                class="sapUiSmallMarginBegin"
+                text="Enter Employee Salary"
+            />
+            <Input
+                id="inpt3"
+                class="sapUiSmallMarginBegin"
+                width="40%"
+            />
+        </VBox>
+        <VBox id="box4">
+            <Label
+                id="label1"
+                class="sapUiSmallMarginBegin"
+                text="Country"
+            />
+            <ComboBox
+                id="countrybox"
+                class="sapUiSmallMarginBegin"
+                items="{
+					path: 'countryModel>/CountryList', length:250,
+					sorter: { path: 'text' }
+				}"
+                width="40%"
+            >
+                <core:Item
+                    id="item"
+                    key="{countryModel>key}"
+                    text="{countryModel>text}"
+                />
+            </ComboBox>
+        </VBox>
+        <beginButton>
+            <Button
+                id="dialogbtn1"
+                text="Submit"
+                press=".submitDialog"
+            />
+        </beginButton>
+        <endButton>
+            <Button
+                id="dialogbtn"
+                text="Cancel"
+                press=".closeDialog"
+            />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

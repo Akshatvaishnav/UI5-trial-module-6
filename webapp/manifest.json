@@ -79,12 +79,24 @@
           "target": [
             "TargetView1"
           ]
+        },
+        {
+          "name": "RouteNew",
+          "pattern": "RouteNew/{dt}",
+          "target": [
+            "NewView"
+          ]
         }
       ],
       "targets": {
         "TargetView1": {
           "id": "View1",
           "name": "View1"
+        },
+        "NewView": {
+          "id": "New",
+          "name": "New",
+          "viewType": "XML"
         }
       }
     },

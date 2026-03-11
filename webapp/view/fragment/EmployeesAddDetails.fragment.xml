@@ -53,15 +53,15 @@
                 id="countrybox"
                 class="sapUiSmallMarginBegin"
                 items="{
-					path: 'countryModel>/CountryList', length:250,
+					path: 'countries>/Countries', length:250,
 					sorter: { path: 'text' }
 				}"
                 width="40%"
             >
                 <core:Item
                     id="item"
-                    key="{countryModel>key}"
-                    text="{countryModel>text}"
+                    key="{countries>key}"
+                    text="{countries>text}"
                 />
             </ComboBox>
         </VBox>

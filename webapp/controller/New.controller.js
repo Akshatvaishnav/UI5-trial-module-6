@@ -22,8 +22,19 @@ sap.ui.define([
                     this.getView().setModel(oModel);
                 }.bind(this));
                 //var router = this.getOwnerComponent().getRouter(this);
-                
-                
+
+                // ComboBox Model
+                var oComboModel = new JSONModel({
+                    Countries: [
+                        { key: "DE", text: "Germany" },
+                        { key: "US", text: "United States" },
+                        { key: "IN", text: "India" }
+                    ]
+                });
+
+                this.getView().setModel(oComboModel, "countries");
+
+
             },
 
             _onRouteMatched: function (oEvent) {
@@ -34,6 +45,7 @@ sap.ui.define([
 
                 // You can now use it to bind the SmartTable, fetch data, etc.
             },
+
             onNavPress: function () {
                 var oHistory = History.getInstance();
                 var sPreviousHash = oHistory.getPreviousHash();
@@ -79,18 +91,37 @@ sap.ui.define([
                     this.getView().byId("input2").setValue("");
                 }
             },
-            onPressDialog: function() {
-            //alert("Hello you hvae pressed dialog button");
+            onPressDialog: function () {
+                //alert("Hello you hvae pressed dialog button");
 
-if (!this.pDialog) {
-    this.pDialog = this.loadFragment({
-        name: "project1.view.fragment.EmployeesAddDetails"
-    });
-   }
-     this.pDialog.then(function(oDialog) {
-     oDialog.open();
-})
-        }
-            
+                if (!this.pDialog) {
+                    this.pDialog = this.loadFragment({
+                        name: "project1.view.fragment.EmployeesAddDetails"
+                    });
+                }
+                this.pDialog.then(function (oDialog) {
+                    oDialog.open();
+                })
+            },
+            submitDialog: function () {
+                alert("Dialog Added");
+
+                var empId = this.getView().byId("inpt1").getValue();
+            console.log(empId);
+            var empName = this.getView().byId("inpt2").getValue();
+            console.log(empName);
+            var empSalary = this.getView().byId("inpt3").getValue();
+            console.log(empSalary);
+            var empCountry = this.getView().byId("countrybox").getSelectedKey();
+            console.log(empCountry);
+
+            this.oDialog.then(function(oDialog))
+            },
+
+            cancelDialog: function () {
+                this.oDialog.close();
+
+            }
+
         });
     });

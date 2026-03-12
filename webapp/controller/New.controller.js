@@ -3,13 +3,15 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "sap/ui/core/routing/History",
     "sap/ui/core/UIComponent",
+    "sap/ui/core/Fragment",
     "sap/m/Dialog",
-    "sap/m/StandardListItem"
+    "sap/m/StandardListItem",
+    "sap/m/MessageBox"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, JSONModel, History, UIComponent, Dialog, List, StandardListItem) {
+    function (Controller, JSONModel, History, UIComponent, Dialog, List, StandardListItem, MessageBox) {
 
         "use strict";
 
@@ -104,24 +106,48 @@ sap.ui.define([
                 })
             },
             submitDialog: function () {
-                alert("Dialog Added");
+                //alert("Dialog Added");
 
                 var empId = this.getView().byId("inpt1").getValue();
-            console.log(empId);
-            var empName = this.getView().byId("inpt2").getValue();
-            console.log(empName);
-            var empSalary = this.getView().byId("inpt3").getValue();
-            console.log(empSalary);
-            var empCountry = this.getView().byId("countrybox").getSelectedKey();
-            console.log(empCountry);
+                console.log(empId);
+                var empName = this.getView().byId("inpt2").getValue();
+                console.log(empName);
+                var empSalary = this.getView().byId("inpt3").getValue();
+                console.log(empSalary);
+                var empCountry = this.getView().byId("countrybox").getSelectedKey();
+                console.log(empCountry);
 
-            this.oDialog.then(function(oDialog))
+
+                if (empId == "") {
+                    MessageBox.error("Employee ID is mandatory");
+                    //alert("Employee ID is mandatory");
+                }
+                else if (empName == "") {
+                    MessageBox.error("Employee ID is mandatory");
+                    //alert("Employee Name is mandatory");
+                } else if (empSalary == "") {
+                    MessageBox.error("Employee ID is mandatory");
+                    //alert("Employee Salary is mandatory");
+                } else {
+
+                    this.pDilog.then(function (oDialog) {
+
+                        oDialog.close();
+                    });
+                }
+
+            },
+            closeDialog: function () {
+                this.pDialog.then(function (oDialog) {
+
+                    oDialog.close();
+                });
             },
 
-            cancelDialog: function () {
-                this.oDialog.close();
-
+            onPressEditDialog: function () {
+                alert("Hello");
             }
+            
 
         });
     });

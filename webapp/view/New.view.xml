@@ -285,6 +285,10 @@
 			        width="230px"
 			        press="onPressDialog"
 			        class="sapUiSmallMarginBottom" />
-            
+                <m:Button
+			        text="Edit Employee Detail "
+			        width="230px"
+			        press="onPressEditDialog"
+			        class="sapUiSmallMarginBottom" />
     </m:Page>
 </veera:View>

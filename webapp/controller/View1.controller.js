@@ -4,14 +4,20 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/m/MessageToast",
     "sap/ui/model/resource/ResourceModel",
-    "sap/ui/core/UIComponent"
-], (Controller, JSONModel,MessageBox, MessageToast, ResourceModel, UIComponent) => {
+    "sap/ui/core/UIComponent",
+    "sap/ui/core/format/DateFormat"
+], (Controller, JSONModel, MessageBox, MessageToast, ResourceModel, UIComponent, UI5Date) => {
     var oModel;
     var oResourceModel;
     "use strict";
 
     return Controller.extend("project1.controller.View1", {
         onInit() {
+            var oDateFormat = sap.ui.core.format.DateFormat.getDateInstance({
+                format: "yMMMd"
+            });
+
+            oDateFormat.format(UI5Date.getInstance());
             oModel = new JSONModel();//object creation for json model
             oResourceModel = this.getView().getModel("i18n"); // declaring the resource model
             var personalInfoJson = [{
@@ -31,29 +37,29 @@ sap.ui.define([
                     "street": "591 Memorial Dr",
                     "city": "Chicopee",
                     "country": "US"
-            }
+                }
             }];
             oModel.setData(personalInfoJson);
             this.getView().setModel(oModel, "Items");
 
             var oComboBoxModel = new sap.ui.model.json.JSONModel({
                 Countries: [
-                    { key:"DE", text:"Germany" },
-                    { key:"US", text:"United States" },
-                    { key:"IN", text:"India" }
+                    { key: "DE", text: "Germany" },
+                    { key: "US", text: "United States" },
+                    { key: "IN", text: "India" }
                 ]
             });
-            this.getView().setModel(oComboBoxModel,"countries");
+            this.getView().setModel(oComboBoxModel, "countries");
         },
         onConfirmationMessageBoxPress: function () {
-			MessageBox.confirm("Password Changed");
-		},
+            MessageBox.confirm("Password Changed");
+        },
         onClearBoxPress: function () {
-			MessageBox.confirm("Clear value!");
+            MessageBox.confirm("Clear value!");
         },
         handleLinkPress: function (evt) {
-			alert("Link was clicked!");
-		},
+            alert("Link was clicked!");
+        },
         onPressSuccess: function () {
             oResourceModel = this.getView().getModel("i18n").getResourceBundle();
             MessageBox.show(oResourceModel.getText("btnSuccess"));
@@ -77,29 +83,29 @@ sap.ui.define([
                     Zipcode: "30001"
                 }
             ];
-            let response = customers.filter(function(Zipcode){
+            let response = customers.filter(function (Zipcode) {
                 return Zipcode.Zipcode == "30001";
             });
             oModel.setData(response[0]);
-            this.getView().setModel(oModel,"filterModel")
+            this.getView().setModel(oModel, "filterModel")
         },
-    		handleMessageToastPress: function(oEvent) {
-			var msg = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy\r\n eirmod.';
-			MessageToast.show(msg);
-		},
-        onConfirmationPress: function(){
+        handleMessageToastPress: function (oEvent) {
+            var msg = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy\r\n eirmod.';
+            MessageToast.show(msg);
+        },
+        onConfirmationPress: function () {
             var username = this.getView().byId("input-a").getValue();
             var Password = this.getView().byId("input-b").getValue();
             var CoinfirmPassword = this.getView().byId("input-c").getValue();
 
-            MessageBox.show(username+" , "+Password+" , "+CoinfirmPassword)
+            MessageBox.show(username + " , " + Password + " , " + CoinfirmPassword)
         },
-        onPressNavigate: function(){
+        onPressNavigate: function () {
             var router = UIComponent.getRouterFor(this);
             var oString = "Welcome to the Second View by Routing and Navigation";
-            router.navTo("RouteNew",{
+            router.navTo("RouteNew", {
                 dt: oString
             });
         }
     });
-});
+}); 
